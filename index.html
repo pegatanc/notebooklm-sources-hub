@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NotebookLM Sources Hub</title>
+<meta name="description" content="Curated directory of websites hosting free files and knowledge for Google NotebookLM sources.">
+<style>
+:root{
+  --bg:#0d1117; --surface:#161b22; --border:#30363d;
+  --text:#c9d1d9; --muted:#8b949e; --accent:#58a6ff; --accent2:#3fb950;
+  --cat1:#f0883e; --cat2:#a371f7; --cat3:#3fb950; --cat4:#f85149; --cat5:#58a6ff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+header{padding:2rem 1rem;text-align:center;border-bottom:1px solid var(--border)}
+header h1{font-size:2rem;font-weight:700;color:var(--accent)}
+header h1 span{color:var(--accent2)}
+header p{color:var(--muted);margin-top:.5rem;font-size:.95rem;max-width:600px;margin-left:auto;margin-right:auto}
+header a{color:var(--accent);text-decoration:none}
+header a:hover{text-decoration:underline}
+.controls{padding:1rem;position:sticky;top:0;background:var(--bg);z-index:10;border-bottom:1px solid var(--border)}
+.search-bar{max-width:800px;margin:0 auto;display:flex;gap:.5rem;flex-wrap:wrap}
+.search-bar input{flex:1;min-width:200px;padding:.6rem .9rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:1rem}
+.search-bar input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(88,166,255,.15)}
+.filters{display:flex;gap:.4rem;flex-wrap:wrap;max-width:800px;margin:.75rem auto 0}
+.filter-btn{padding:.35rem .8rem;background:var(--surface);border:1px solid var(--border);border-radius:20px;color:var(--muted);cursor:pointer;font-size:.8rem;transition:all .15s}
+.filter-btn:hover{border-color:var(--accent);color:var(--text)}
+.filter-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+main{max-width:800px;margin:0 auto;padding:1.5rem 1rem}
+.section{margin-bottom:2.5rem}
+.section h2{font-size:1.15rem;font-weight:600;margin-bottom:.75rem;padding-bottom:.4rem;border-bottom:1px solid var(--border)}
+.cat-indicator{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:.5rem;vertical-align:middle}
+.cards{display:grid;gap:.6rem}
+.card{display:block;padding:.85rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;text-decoration:none;color:var(--text);transition:border-color .15s,transform .1s}
+.card:hover{border-color:var(--accent);transform:translateY(-1px)}
+.card-name{font-weight:600;color:var(--accent);font-size:.95rem}
+.card-url{color:var(--muted);font-size:.8rem;margin-left:.4rem}
+.card-desc{font-size:.85rem;color:var(--muted);margin-top:.25rem}
+.card-format{display:inline-block;margin-top:.4rem;padding:.1rem .5rem;background:var(--bg);border:1px solid var(--border);border-radius:4px;font-size:.7rem;color:var(--accent2)}
+.tip{background:var(--surface);border-left:3px solid var(--accent2);padding:.75rem 1rem;border-radius:0 6px 6px 0;margin-bottom:2rem;font-size:.85rem;color:var(--muted)}
+.tip strong{color:var(--accent2)}
+footer{text-align:center;padding:2rem 1rem;border-top:1px solid var(--border);color:var(--muted);font-size:.8rem}
+footer a{color:var(--accent);text-decoration:none}
+.no-results{text-align:center;padding:2rem;color:var(--muted)}
+@media(max-width:600px){header h1{font-size:1.5rem}.search-bar input{font-size:.9rem}}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>NotebookLM <span>Sources Hub</span></h1>
+  <p>Curated directory of websites hosting free files &amp; knowledge for <a href="https://notebooklm.google" target="_blank" rel="noopener">Google NotebookLM</a> sources. Download PDFs, ebooks, papers, datasets &mdash; upload to your notebooks.</p>
+</header>
+
+<div class="controls">
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Search sites, topics, formats (e.g. physics, PDF, dataset)..." aria-label="Search sources">
+  </div>
+  <div class="filters" id="filters">
+    <button class="filter-btn active" data-cat="all">All</button>
+    <button class="filter-btn" data-cat="academic">📄 Academic</button>
+    <button class="filter-btn" data-cat="textbooks">📚 Textbooks</button>
+    <button class="filter-btn" data-cat="ebooks">📖 Ebooks</button>
+    <button class="filter-btn" data-cat="datasets">📊 Datasets</button>
+    <button class="filter-btn" data-cat="native">⚙️ NotebookLM Native</button>
+  </div>
+</div>
+
+<main id="main">
+  <div class="tip">
+    <strong>How to use:</strong> Download files from any site below → open NotebookLM → click "Add source" → upload PDF/text/audio, or paste URL. Limit: 50 sources/notebook (300 for Plus). Max 500KB text, 200MB per source.
+  </div>
+</main>
+
+<footer>
+  Built for the NotebookLM community &middot; <a href="https://github.com/komodo/notebooklm-sources-hub">Source on GitHub</a> &middot; Add sites via PR
+</footer>
+
+<script>
+const sites=[
+  // Academic Papers & Research
+  {cat:"academic",name:"arXiv",url:"https://arxiv.org",desc:"2M+ preprint papers — physics, CS, math, biology. Free PDF download.",fmt:"PDF"},
+  {cat:"academic",name:"Semantic Scholar",url:"https://semanticscholar.org",desc:"225M+ papers, AI-powered search. PDF download when available.",fmt:"PDF"},
+  {cat:"academic",name:"Google Scholar",url:"https://scholar.google.com",desc:"Indexes all academic papers. Links to free PDFs when available.",fmt:"PDF"},
+  {cat:"academic",name:"CORE",url:"https://core.ac.uk",desc:"200M+ open access papers from repositories worldwide. Direct PDF.",fmt:"PDF"},
+  {cat:"academic",name:"DOAJ",url:"https://doaj.org",desc:"Directory of Open Access Journals — millions of free articles.",fmt:"PDF"},
+  {cat:"academic",name:"PubMed Central",url:"https://pubmed.ncbi.nlm.nih.gov",desc:"Free biomedical and life sciences journal articles.",fmt:"PDF"},
+  {cat:"academic",name:"bioRxiv",url:"https://www.biorxiv.org",desc:"Biology preprints. Dermatology, ecology, pharmacology, neuroscience.",fmt:"PDF"},
+  {cat:"academic",name:"SSRN",url:"https://www.ssrn.com",desc:"Social sciences & humanities research network preprints.",fmt:"PDF"},
+  {cat:"academic",name:"Zenodo",url:"https://zenodo.org",desc:"CERN-backed research data sharing. Datasets, papers, software.",fmt:"PDF / CSV / JSON"},
+
+  // Free Textbooks & Books
+  {cat:"textbooks",name:"OpenStax",url:"https://openstax.org",desc:"Rice University peer-reviewed textbooks. Math, science, business, economics.",fmt:"PDF"},
+  {cat:"textbooks",name:"LibreTexts",url:"https://libretexts.org",desc:"398+ STEM textbooks. Serves 220M+ students. Peer-reviewed.",fmt:"PDF"},
+  {cat:"textbooks",name:"OAPEN",url:"https://oapen.org",desc:"Open access academic books. Download by chapter or full book.",fmt:"PDF"},
+  {cat:"textbooks",name:"Open Textbook Library",url:"https://open.umn.edu/opentextbooks",desc:"University of Minnesota — arts, math, social sciences. Author-licensed.",fmt:"PDF / EPUB"},
+  {cat:"textbooks",name:"Bookboon",url:"https://bookboon.com",desc:"Textbooks from university lecturers. Business, economics, science, IT.",fmt:"PDF"},
+  {cat:"textbooks",name:"BCcampus OpenEd",url:"https://open.bccampus.ca",desc:"BC courses — accounting, sociology, biology, media, technology.",fmt:"PDF"},
+  {cat:"textbooks",name:"Saylor Academy",url:"https://www.saylor.org",desc:"PDF, Word, EPUB textbooks. Diverse fields including marketing, public speaking.",fmt:"PDF / EPUB"},
+  {cat:"textbooks",name:"IntechOpen",url:"https://www.intechopen.com",desc:"2,000+ STEM textbooks. 60M+ downloads. Peer-reviewed journals.",fmt:"PDF"},
+  {cat:"textbooks",name:"OER Commons",url:"https://www.oercommons.org",desc:"Thousands of open educational resources. Educator-authored.",fmt:"PDF"},
+  {cat:"textbooks",name:"CiteSeerX",url:"https://citeseerx.ist.psu.edu",desc:"Penn State University — books and papers, citation indexing.",fmt:"PDF"},
+  {cat:"textbooks",name:"ScholarWorks",url:"https://scholarworks.calstate.edu",desc:"CalState — scholar-written and published digital books.",fmt:"PDF"},
+
+  // General Knowledge & Ebooks
+  {cat:"ebooks",name:"Internet Archive",url:"https://archive.org",desc:"Massive library — books, PDFs, documents, audio, video. Multiple formats.",fmt:"PDF / EPUB / TXT / Audio"},
+  {cat:"ebooks",name:"Project Gutenberg",url:"https://gutenberg.org",desc:"70,000+ public domain ebooks. Classic literature, historical texts.",fmt:"PDF / EPUB / TXT"},
+  {cat:"ebooks",name:"Wikibooks",url:"https://www.wikibooks.org",desc:"Open-content textbooks across all fields. STEM, social sciences, languages.",fmt:"PDF / HTML"},
+  {cat:"ebooks",name:"PDF Drive",url:"https://www.pdfdrive.com",desc:"Mix of classical and modern textbooks. Browse most sought-after titles.",fmt:"PDF"},
+  {cat:"ebooks",name:"Manybooks",url:"https://manybooks.net",desc:"29,000+ digital books in 46 languages. Classic and indie titles.",fmt:"PDF / EPUB"},
+  {cat:"ebooks",name:"Open Culture",url:"https://www.openculture.com",desc:"Cultural and educational media. Thousands of textbooks + free audiobooks.",fmt:"PDF / Audio"},
+  {cat:"ebooks",name:"Digital Book Index",url:"https://www.digitalbookindex.org",desc:"Hundreds of thousands of digital books. Math, science, medicine, law, history.",fmt:"PDF / EPUB"},
+  {cat:"ebooks",name:"Freeditorial",url:"https://www.freeditorial.com",desc:"Open digital library and publishing house. English and Spanish.",fmt:"PDF / EPUB"},
+  {cat:"ebooks",name:"Ocean of PDF",url:"https://oceanofpdf.com",desc:"Massive digital library. Request books not currently available.",fmt:"PDF / EPUB"},
+
+  // Datasets & Data
+  {cat:"datasets",name:"Kaggle Datasets",url:"https://www.kaggle.com/datasets",desc:"Datasets for ML, analysis. CSV, JSON. Download for research.",fmt:"CSV / JSON"},
+  {cat:"datasets",name:"Google Dataset Search",url:"https://datasetsearch.research.google.com",desc:"Search engine for datasets across the web.",fmt:"CSV / JSON / Various"},
+  {cat:"datasets",name:"HuggingFace Datasets",url:"https://huggingface.co/datasets",desc:"ML datasets, text corpora. Download or stream via API.",fmt:"CSV / JSON / Parquet"},
+  {cat:"datasets",name:"Data.gov",url:"https://www.data.gov",desc:"US government open data. Agriculture, climate, finance, health.",fmt:"CSV / JSON / XML"},
+
+  // NotebookLM Native Features
+  {cat:"native",name:"Discover Sources",url:"https://notebooklm.google",desc:"Built into NotebookLM. Describe your topic → auto-finds up to 10 curated web sources → 1-click add.",fmt:"Web / URL"},
+  {cat:"native",name:"Gemini Deep Research",url:"https://notebooklm.google",desc:"In-app deep web research. Type a question → NotebookLM searches and adds sources automatically.",fmt:"Web / URL"},
+  {cat:"native",name:"Google Drive",url:"https://drive.google.com",desc:"Import Google Docs, Sheets, Slides directly into NotebookLM notebooks.",fmt:"Docs / Sheets / Slides"},
+  {cat:"native",name:"YouTube",url:"https://youtube.com",desc:"Paste any YouTube URL as a NotebookLM source. Transcript analyzed.",fmt:"Video / URL"},
+  {cat:"native",name:"Public Notebooks",url:"https://notebooklm.google",desc:"Community-shared notebooks via public links. Browse curated knowledge from others.",fmt:"NotebookLM Link"},
+  {cat:"native",name:"r/notebooklm",url:"https://www.reddit.com/r/notebooklm",desc:"Reddit community — source lists, recommended sites, tips, pre-built notebooks.",fmt:"Web"},
+  {cat:"native",name:"NotebookLM Sources Exporter",url:"https://chromewebstore.google.com",desc:"Chrome extension to export NotebookLM sources as markdown files. Re-import to Obsidian/Notion.",fmt:"Markdown"},
+];
+
+const catMeta={
+  academic:{label:"Academic Papers & Research",color:"var(--cat1)",icon:"📄"},
+  textbooks:{label:"Free Textbooks",color:"var(--cat2)",icon:"📚"},
+  ebooks:{label:"General Knowledge & Ebooks",color:"var(--cat3)",icon:"📖"},
+  datasets:{label:"Datasets & Data",color:"var(--cat4)",icon:"📊"},
+  native:{label:"NotebookLM Native Features",color:"var(--cat5)",icon:"⚙️"},
+};
+let activeCat="all";
+let searchTerm="";
+
+function render(){
+  const main=document.getElementById("main");
+  const tip=`<div class="tip"><strong>How to use:</strong> Download files from any site below &rarr; open NotebookLM &rarr; click "Add source" &rarr; upload PDF/text/audio, or paste URL. Limit: 50 sources/notebook (300 for Plus). Max 500KB text, 200MB per source.</div>`;
+  const filtered=sites.filter(s=>{
+    const catOk=activeCat==="all"||s.cat===activeCat;
+    const q=searchTerm.toLowerCase();
+    const searchOk=!q||s.name.toLowerCase().includes(q)||s.desc.toLowerCase().includes(q)||s.fmt.toLowerCase().includes(q)||s.cat.includes(q);
+    return catOk&&searchOk;
+  });
+  if(filtered.length===0){
+    main.innerHTML=tip+`<div class="no-results">No sites found. Try a different search or filter.</div>`;
+    return;
+  }
+  const cats=activeCat==="all"?Object.keys(catMeta):[activeCat];
+  let html=tip;
+  cats.forEach(cat=>{
+    const items=filtered.filter(s=>s.cat===cat);
+    if(items.length===0)return;
+    const m=catMeta[cat];
+    html+=`<div class="section"><h2><span class="cat-indicator" style="background:${m.color}"></span>${m.icon} ${m.label}</h2><div class="cards">`;
+    items.forEach(s=>{
+      html+=`<a class="card" href="${s.url}" target="_blank" rel="noopener"><div><span class="card-name">${s.name}</span><span class="card-url">${s.url.replace('https://','')}</span></div><div class="card-desc">${s.desc}</div><span class="card-format">${s.fmt}</span></a>`;
+    });
+    html+=`</div></div>`;
+  });
+  main.innerHTML=tip+html.replace(tip,'');
+}
+
+document.getElementById("search").addEventListener("input",e=>{searchTerm=e.target.value;render();});
+document.querySelectorAll(".filter-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    activeCat=btn.dataset.cat;
+    render();
+  });
+});
+
+render();
+</script>
+</body>
+</html>
