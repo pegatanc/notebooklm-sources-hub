@@ -2,7 +2,7 @@
 
 A curated directory of websites hosting free files and knowledge for [Google NotebookLM](https://notebooklm.google) sources.
 
-🔗 **Live site:** https://komodo.github.io/notebooklm-sources-hub/
+🔗 **Live site:** https://pegatanc.github.io/notebooklm-sources-hub/
 
 ## What is this?
 
